@@ -1,5 +1,5 @@
 // sortowanie przez scalanie (mergesort)
-// www.algorytm.org
+// www.algorytm.orgsdssdsdsdsdsd
 
 #include<iostream>
 using namespace std;
