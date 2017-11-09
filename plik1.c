@@ -5,7 +5,7 @@
 
 void main(void)
 {
-int i,j,zakres,dokad;
+int i,j,zakres;
 int tablica[10000];
 printf("Podaj gorny zakres, do ktorego chcesz odnalezc liczby pierwsze\n");
 scanf("%d",&zakres);
