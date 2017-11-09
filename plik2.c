@@ -1,7 +1,7 @@
 include <stdio.h>sssssssssssssssssssdsds
 #include <stdlib.h>
 #include <math.h>
-#include <time.h>
+#include <time.h> // sdsddssdsdsd
 
 int main()
 {
