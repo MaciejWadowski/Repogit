@@ -19,7 +19,7 @@ tab[i]=tab[i+1];
 tab[i+1]=temp;
 }
 }
-if (!zamiana) // jezeli nie bylo zmian to koniec sortowania - wyjscie z petli while
+if (!zamiana)
 break;
 }
 }

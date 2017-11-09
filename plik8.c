@@ -5,7 +5,7 @@
 #include <stack>
 #include <vector>
 
-//!Wartoœæ, od której przyjmujemy nieskoñczonoœæ
+
 #define nieskonczonosc 1000
 
 using namespace std;

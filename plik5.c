@@ -20,7 +20,7 @@ void main(void)
 {
 int ile_liczb,i,liczba;
 int tablica[10];
-clrscr();
+
 printf("Ile liczb chesz posortowac (do 10) ? ");
 scanf("%i",&ile_liczb);
 for(i=0; i<ile_liczb; i++)

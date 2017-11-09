@@ -15,7 +15,7 @@ for (i=1; i<=zakres; i++) tablica[i]=1;
 //algorytm - sito eratostenesa
 for (i=2; i<=dokad; i++)
 {
-if (tablica[i] != 0)
+
 {
 j = i+i;
 while (j<=zakres)

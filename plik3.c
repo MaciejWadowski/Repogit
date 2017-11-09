@@ -18,7 +18,7 @@ j++;
 }
 else
 {
-tab_pom[k] = tablica[i];
+
 i++;
 }
 k++;

@@ -7,7 +7,7 @@ int  c[100];
 
 int main()
 {
-//pobierz dane
+
 printf("Podaj liczbe wierzcholkow grafu\n");
 scanf("%d",&n);
 for (i=0; i<n; i++)

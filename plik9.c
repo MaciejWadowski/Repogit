@@ -9,7 +9,7 @@
 void main(void)
 {
 FILE *plik;
-int     n; //liczba wierzcholkow
+int     n; /
 int     A[100][100];
 int     D[100];
 char    s[5];

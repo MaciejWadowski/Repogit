@@ -11,7 +11,7 @@ int tablica2[10] = { 0, 23, 44, 77, 99, 101, 111, 150, 162, 199 };
 int tablica_wynikowa[20];
 int i, j, k; // zmienne pomocnicze
 
-// wyswietlenie wygenerowanych ciagow
+
 cout << "Ciag pierwszy: ";
 for (i = 0; i < 10; i++)
 cout << tablica1[i] << " ";

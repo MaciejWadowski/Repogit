@@ -2,7 +2,7 @@ using namespace std;
 
 int main()
 {
-int graf[100][100]; // graf nad ktorym bedziemy pracowac
+int graf[100][100]; /
 int odwiedzone[MX]; //tablica odwiedzonych
 int waga[MX];       //tablica wag poszczegolnych polaczen
 int nastepnik[MX];  // tablica nastepnych polaczen
