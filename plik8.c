@@ -23,7 +23,7 @@ K>0          waga krawêdzi (i,j)
 int     A[100][100];
 
 /*!Wektor odleg³oœci od pierwszego wierzcho³ka do pozosta³ych,
-Zostal wyliczony przez algorytm Forda-Bellmana
+Zostal wyliczony przez 
 */
 int     D[100];
 
