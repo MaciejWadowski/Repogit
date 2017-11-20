@@ -15,25 +15,25 @@ class   cGraf{
 
 public:
 
-/*!Macierz przyleg³oœci, w indeksie (i,j) zawiera wartoœci:
+/*!Macierz przylegÅ‚oÅ›ci, w indeksie (i,j) zawiera wartoÅ›ci:
 0           dla i=j
-nieskonczonosc      jeœli nie istnieje krawêdŸ (i,j)
-K>0          waga krawêdzi (i,j)
+nieskonczonosc      jeÅ›li nie istnieje krawÄ™dÅº (i,j)
+K>0          waga krawÄ™dzi (i,j)
 */
 int     A[100][100];
 
-/*!Wektor odleg³oœci od pierwszego wierzcho³ka do pozosta³ych,
+/*!Wektor odlegÅ‚oÅ›ci od pierwszego wierzchoÅ‚ka do pozostaÅ‚ych,
 Zostal wyliczony przez 
 */
 int     D[100];
 
-//!Liczba wierzcho³ków grafu
+//!Liczba wierzchoÅ‚kÃ³w grafu
 int n;
 
-//!Stos, na którym odk³adane bêd¹ wierzcho³ki tworz¹ce drogê
+//!Stos, na ktÃ³rym odkÅ‚adane bÄ™dÄ… wierzchoÅ‚ki tworzÄ…ce drogÄ™
 stack <int, vector<int> > Stos;
 
-//!Metoda wyznacza listê poprzednikow wierzcho³ka x
+//!Metoda wyznacza listÄ™ poprzednikow wierzchoÅ‚ka x
 vector<int> Poprzedniki(int x){
 vector<int> wynik;
 
@@ -48,14 +48,14 @@ return(wynik);
 //Metoda konstruuje droge miedzy wierzcholkiem 1 i x o dlugosci D[x]
 void KonstruujDroge(int x){
 int u,v,i;
-//!Lista poprzedników
+//!Lista poprzednikÃ³w
 vector<int>           poprzedniki;
 
-//Dodaj wierzcho³ek koñcowy na stos
+//Dodaj wierzchoÅ‚ek koÅ„cowy na stos
 Stos.push(x);
 v=x;
 
-//Konstruuj drogê a¿ dojdziesz do wierzcho³ka startowego
+//Konstruuj drogÄ™ aÅ¼ dojdziesz do wierzchoÅ‚ka startowego
 while (v!=0){
 poprzedniki=Poprzedniki(v);
 
@@ -94,10 +94,10 @@ cGraf               Graf;
 if ((plik=fopen("graf.txt","r"))==NULL)
 printf("Brak pliku graf.txt!\n"); else
 {
-//!Wczytujemy liczbê wierzcho³ków grafu
+//!Wczytujemy liczbÄ™ wierzchoÅ‚kÃ³w grafu
 fscanf(plik,"%d",&Graf.n);
 
-//!Wczytujemy dane do macierzy przyleg³oœci
+//!Wczytujemy dane do macierzy przylegÅ‚oÅ›ci
 for (j=0;j<Graf.n;j++)
 for (i=0;i<Graf.n;i++)
 {
@@ -105,7 +105,7 @@ fscanf(plik,"%s",s);
 if (strcmp(s,"*")!=0)
 Graf.A[j][i]=atoi(s); else Graf.A[j][i]=nieskonczonosc;
 }
-//Wczytaj wektor odleg³osci, zosta³ on obliczony algorytmem Forda-Bellmana
+//Wczytaj wektor odlegÅ‚osci, zostaÅ‚ on obliczony algorytmem Forda-Bellmana
 for (i=0;i<Graf.n;i++){
 fscanf(plik,"%s",s);
 Graf.D[i]=atoi(s);

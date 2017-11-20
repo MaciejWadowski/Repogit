@@ -23,7 +23,6 @@ for (i=0; i<n; i++) s+=c[i];
 if ((s%2)!=0)
 graficzny=0;
 else
-//posortuj ci¹g nierosn¹co je¿eli suma jest liczb¹ parzyst¹
 {
 flag=1;
 while (flag==1)

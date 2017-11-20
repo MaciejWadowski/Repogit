@@ -33,7 +33,7 @@ fclose(plik);
 
 for (i=0;i<n;i++) D[i]=A[0][i];
 
-//Przyjmujemy, ¿e s=1, szukamy wi
+
 for (k=1;k<=n-2;k++)
 {
 for (i=1;i<n;i++)
