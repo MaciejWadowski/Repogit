@@ -1,4 +1,4 @@
-include <stdio.h>sssssssssssssssssssdsds
+include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
 #include <time.h>
@@ -7,7 +7,7 @@ int main()
 {
     char p[20][80];
     char ptak[5][5]={
-        { ' ', ' ', '\\', ' ', ' '},
+        { ' ', ' ', '\\', ' '},
         { ' ', '=', '=','o', '>'},
         { ' ', ' ', '//', ' ',' ',},
         };
