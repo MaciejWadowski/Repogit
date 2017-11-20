@@ -21,8 +21,7 @@ tab[i+1]=temp;
 }
 if (!zamiana)
 break;
-}
-}
+}}
 int main()
 {
 int rozmiar;
