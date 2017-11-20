@@ -33,6 +33,6 @@ clrscr();
 printf("Tablica przed posortowaniem:");
 for(i=0; i<ile_liczb; i++) printf("\n%i",tablica[i]);
 selectionsort(tablica,ile_liczb);
-printf("\nDowolny klawisz...");
+printf("\nDowolny klawisz.");
 getch();
 }

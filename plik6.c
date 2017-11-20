@@ -28,7 +28,7 @@ int rozmiar;
 cin>>rozmiar; // wczytaj rozmiar tablicy
 int *tab=new int[rozmiar]; // utwórz dynamicznie tablicê
 
-for (int i=0;i<rozmiar;i++) // wczytaj liczby do tablicy
+for (int i=0;i<rozmiar;i++) /
 cin>>tab[i];
 
 sort (tab,rozmiar); // posortuj tablicê
