@@ -25,7 +25,7 @@ k++;
 }
 
 if (i <= srodek)
-{
+{sadas
 while (i <= srodek)
 {
 tab_pom[k] = tablica[i];
