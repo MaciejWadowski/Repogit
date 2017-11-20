@@ -1,5 +1,5 @@
 // Scalanie ciagow
-// www.algorytm.org
+
 
 #include <iostream>
 using namespace std;
