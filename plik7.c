@@ -9,7 +9,7 @@ int nastepnik[MX];  // tablica nastepnych polaczen
 
 int n , m;      //n - liczba wierzkochlkow   m - liczba krawedzi
 int g;          //liczba przypadk�w testowych
-int a, b, c;        // dane wejsciowe a- pierwszy wierzcholek, b- drugi wierzcholek, c - waga
+int a, b, c;        /
 int wiersz,wierzcholki,koszt,i;
 
 printf( "Podaj liczbe przypadkow\n" );
