@@ -5,9 +5,13 @@ import random
 
 
 pygame.init()
+pygame.mixer.init()
 
 hit_sound = pygame.mixer.Sound("jab.wav")
-pygame.mixer.music.load("jab.wav")
+
+game_sound = pygame.mixer.Sound("music.mp3")
+pygame.mixer.music.load("music.mp3")
+
 
 display_width = 800
 display_height = 600
@@ -114,18 +118,6 @@ def quitgame():
     pygame.quit()
     quit()
 
-def choose_new(tab):
-    while True:
-        roll=True
-        tmp=random.randint(1,50)
-        for i in range(len(tab)):
-            if tmp==tab[i]:
-                roll=False
-                print("lol",tmp)
-                tmp=random.randint(1,30)
-        if roll:
-            return tmp
-            break
 
 def gameIntro():
     Intro=True
@@ -136,7 +128,7 @@ def gameIntro():
                 quit()
                 
         gameDisplay.fill(white)
-        largeText=pygame.font.Font('freesansbold.ttf',115)
+        largeText = pygame.font.Font('freesansbold.ttf',115)
         TextSurf, TextRect = text_objects("Arkanoid", largeText)
         TextRect.center=((display_width)/2,(display_height)/2)
         gameDisplay.blit(TextSurf, TextRect)
@@ -160,7 +152,7 @@ def paused():
                 
         gameDisplay.fill(white)
         largeText=pygame.font.Font('freesansbold.ttf',115)
-        TextSurf, TextRect = text_objects("Arcanoid", largeText)
+        TextSurf, TextRect = text_objects("PAUSE", largeText)
         TextRect.center=((display_width)/2,(display_height)/2)
         gameDisplay.blit(TextSurf, TextRect)
         
@@ -218,8 +210,9 @@ def game_loop():
     pause = False
     bonusx = 0
     bonusy = 0
+    game_sound.play()
     
-    active_bonuses = [0,0,0,0,0,0,0,0,0]    
+    active_bonuses = 0   
     
     ile = 16
     row = 5
@@ -251,7 +244,7 @@ def game_loop():
     ballspeedy = 5
     block_height = 25
     block_width = 50
-    bonus_width = 11
+    bonus_width = 15
     
     while not gameExit:
         for event in pygame.event.get():
@@ -283,39 +276,33 @@ def game_loop():
                             lv_row_1[i][j] -= 1
                             ballspeedy = -ballspeedy
                             points += 1
-                            pygame.mixer.music.play(1)
+                            hit_sound.play()
                             bonusy = by
                             bonusx = bx
-                            for k in range(len(active_bonuses)):
-                                if active_bonuses[k]==0:
-                                    active_bonuses[k] = choose_new(active_bonuses)
-                                    bonusx = bx + 10
-                                    bonusy = by
-                                    break
+                            if active_bonuses==0:
+                                active_bonuses = random.randint(1,30)
+                                bonusx = bx + 10
+                                bonusy = by
                     elif bally + ball_width == by or bally+ball_width == by+block_width:
                         if ballx >= bx and ballx <= bx + block_width:
                             lv_row_1[i][j] -= 1
                             ballspeedy= -ballspeedy
                             points += 1
-                            pygame.mixer.music.play(1)
-                            for k in range(len(active_bonuses)):
-                                if active_bonuses[k] == 0:
-                                    active_bonuses[k] = choose_new(active_bonuses)
-                                    bonusx = bx + 10
-                                    bonusy = by
-                                    break
+                            hit_sound.play()
+                            if active_bonuses == 0:
+                                active_bonuses = random.randint(1,30)
+                                bonusx = bx + 10
+                                bonusy = by
                     elif bally > by and bally < by + block_height or bally + ball_width > by and ball_width + bally < by + block_width:
                         if ballx >= bx and ballx <= bx + block_width: 
                             ballspeedx = -ballspeedx
                             lv_row_1[i][j] -= 1
                             points += 1
-                            pygame.mixer.music.play(1)
-                            for k in range(len(active_bonuses)):
-                                if active_bonuses[k] == 0:
-                                    active_bonuses[k] = choose_new(active_bonuses)
-                                    bonusx = bx + 10 
-                                    bonusy = by
-                                    break
+                            hit_sound.play()
+                            if active_bonuses == 0:
+                                active_bonuses = random.randint(1,30)
+                                bonusx = bx + 10
+                                bonusy = by
                     
         
         if x < 0 :
@@ -329,7 +316,7 @@ def game_loop():
             ballspeedx = -ballspeedx
         if bally<=0:
             ballspeedy = -ballspeedy
-        if bally >= display_height * 0.9 - 1  and ballx >= x  and ballx <= x + spacecraft_width - 5:
+        if bally >= display_height * 0.9 - 1 and bally <=display_height*0.93 and ballx >= x  and ballx <= x + spacecraft_width - 5:
             ballspeedy = abs(ballspeedy)
             
         if bally >= display_height:
@@ -356,101 +343,100 @@ def game_loop():
         spacecraft(x,y,spacecraft_width)
         Points(points)
         Life(life)
-        for i in range(len(active_bonuses)):
-            if active_bonuses[i]==1:
-                if bonusx !=0 :
-                    tmp_1 = bonusx
-                    tmp_2 = bonusy
-                    bonusx = 0
-                    bonusy = 0
-                lifeBonus(tmp_1,tmp_2)
-                tmp_2 += 3
-                if y <= tmp_2 + bonus_width:
-                    if tmp_1 + bonus_width >= x and tmp_1 <= x + spacecraft_width :
-                        life += 1
-                        print("wow1")
-                        active_bonuses[i] = 0
-                if tmp_2 > display_height:
-                    active_bonuses[i] = 0
-            elif active_bonuses[i] == 2:
-                if bonusx !=0 :
-                    tmp_3 = bonusx
-                    tmp_4 = bonusy
-                    bonusx = 0
-                    bonusy = 0
-                speedbonus(tmp_3,tmp_4)
-                tmp_4 += 3
-                if y < tmp_4 + bonus_width:
-                    if tmp_3 + bonus_width >= x and tmp_3 <= x + spacecraft_width :
-                        if abs(ballspeedx) > 7 :
-                            if ballspeedx < 0:
-                                ballspeedx -= 1
-                            else:
-                                ballspeedx += 1
-                            if ballspeedy <0 :
-                                ballspeedy -=1
-                            else:
-                                ballspeedy +=1
-                            active_bonuses[i]=0
-                            print("wow2")
-                        active_bonuses[i] = 0
-                if tmp_4 > display_height:
-                    active_bonuses[i] = 0
-            elif active_bonuses[i] == 3:
-                if bonusx !=0 :
-                    tmp_5 = bonusx
-                    tmp_6 = bonusy
-                    bonusx = 0
-                    bonusy = 0
-                speedbonus(tmp_5,tmp_6)
-                tmp_6 += 3
-                if y < tmp_6 + bonus_width:
-                    if tmp_5 + bonus_width >= x and tmp_5 <= x + spacecraft_width :
-                        if abs(ballspeedx) < 4:
-                            if ballspeedx < 0:
-                                ballspeedx += 1
-                            else:
-                                ballspeedx -= 1
-                            if ballspeedy <0 :
-                                ballspeedy += 1
-                            else:
-                                ballspeedy -= 1
-                            print("wow3")
-                        active_bonuses[i] = 0
-                if tmp_6 > display_height:
-                    active_bonuses[i] = 0
-            elif active_bonuses[i] > 7:
-                active_bonuses[i] = 0
-            elif active_bonuses[i] == 4:
-                if bonusx !=0 :
-                    tmp_7 = bonusx
-                    tmp_8 = bonusy
-                    bonusx = 0
-                    bonusy = 0
-                sizebonus(tmp_7, tmp_8)
-                tmp_8 += 3
-                if y < tmp_8 + bonus_width:
-                    if tmp_7 + bonus_width >= x and tmp_7 <= x + spacecraft_width :
-                        if spacecraft_width < 150:
-                            spacecraft_width += 25
-                        active_bonuses[i] = 0    
-                if  tmp_8 > display_height:
-                    active_bonuses[i]=0
-            elif active_bonuses[i] == 5:
-                if bonusx !=0 :
-                    tmp_9 = bonusx
-                    tmp_10 = bonusy
-                    bonusx = 0
-                    bonusy = 0
-                sizebonus(tmp_9, tmp_10)
-                tmp_10 += 3
-                if y < tmp_10 + bonus_width:
-                    if tmp_9 + bonus_width >= x and tmp_9 <= x + spacecraft_width:
-                        if spacecraft_width > 50:
-                            spacecraft_width -= 25
-                        active_bonuses[i] = 0    
-                if  tmp_10 > display_height:
-                    active_bonuses[i]=0
+        if active_bonuses==1:
+            if bonusx !=0 :
+                tmp_1 = bonusx
+                tmp_2 = bonusy
+                bonusx = 0
+                bonusy = 0
+            lifeBonus(tmp_1,tmp_2)
+            tmp_2 += 3
+            if y <= tmp_2 + bonus_width:
+                if tmp_1 + bonus_width >= x and tmp_1 <= x + spacecraft_width :
+                    life += 1
+                        
+                    active_bonuses = 0
+            if tmp_2 > display_height:
+                active_bonuses = 0
+        elif active_bonuses == 2:
+            if bonusx !=0 :
+                tmp_3 = bonusx
+                tmp_4 = bonusy
+                bonusx = 0
+                bonusy = 0
+            speedbonus(tmp_3,tmp_4)
+            tmp_4 += 3
+            if y < tmp_4 + bonus_width:
+                if tmp_3 + bonus_width >= x and tmp_3 <= x + spacecraft_width :
+                    if abs(ballspeedx) > 7 :
+                        if ballspeedx < 0:
+                            ballspeedx -= 1
+                        else:
+                            ballspeedx += 1
+                        if ballspeedy <0 :
+                            ballspeedy -=1
+                        else:
+                            ballspeedy +=1
+                        active_bonuses=0
+                            
+                    active_bonuses = 0
+            if tmp_4 > display_height:
+                active_bonuses = 0
+        elif active_bonuses == 3:
+            if bonusx !=0 :
+                tmp_5 = bonusx
+                tmp_6 = bonusy
+                bonusx = 0
+                bonusy = 0
+            speedbonus(tmp_5,tmp_6)
+            tmp_6 += 3
+            if y < tmp_6 + bonus_width:
+                if tmp_5 + bonus_width >= x and tmp_5 <= x + spacecraft_width :
+                    if abs(ballspeedx) < 4:
+                        if ballspeedx < 0:
+                            ballspeedx += 1
+                        else:
+                            ballspeedx -= 1
+                        if ballspeedy <0 :
+                            ballspeedy += 1
+                        else:
+                            ballspeedy -= 1
+
+                    active_bonuses = 0
+            if tmp_6 > display_height:
+                active_bonuses = 0
+        elif active_bonuses >= 6:
+            active_bonuses = 0
+        elif active_bonuses == 4:
+            if bonusx !=0 :
+                tmp_7 = bonusx
+                tmp_8 = bonusy
+                bonusx = 0
+                bonusy = 0
+            sizebonus(tmp_7, tmp_8)
+            tmp_8 += 3
+            if y < tmp_8 + bonus_width:
+                if tmp_7 + bonus_width >= x and tmp_7 <= x + spacecraft_width :
+                    if spacecraft_width < 150:
+                        spacecraft_width += 25
+                    active_bonuses = 0    
+            if  tmp_8 > display_height:
+                active_bonuses=0
+        elif active_bonuses == 5:
+            if bonusx !=0 :
+                tmp_9 = bonusx
+                tmp_10 = bonusy
+                bonusx = 0
+                bonusy = 0
+            resizebonus(tmp_9, tmp_10)
+            tmp_10 += 3
+            if y < tmp_10 + bonus_width:
+                if tmp_9 + bonus_width >= x and tmp_9 <= x + spacecraft_width:
+                    if spacecraft_width > 50:
+                        spacecraft_width -= 25
+                    active_bonuses = 0    
+            if  tmp_10 > display_height:
+                active_bonuses=0
             
         check=True
         
