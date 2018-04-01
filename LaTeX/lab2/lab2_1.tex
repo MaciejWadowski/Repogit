@@ -1,0 +1,29 @@
+\documentclass[a4paper,11pt, fleqn]{article}
+\usepackage{amssymb}
+\usepackage[polish]{babel}
+\usepackage[cp1250]{inputenc}   
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{anysize}
+\usepackage{enumerate}
+\usepackage{times}
+\usepackage{subfig} 
+\usepackage{amsmath}
+\usepackage{color}
+
+%\marginsize{left}{right}{top}{bottom}
+\marginsize{3cm}{3cm}{3cm}{3cm}
+
+\begin{document}
+	
+\section*{Ca³ka Riemanna}	
+Niech dana bêdzie {\color{blue}funkcja ograniczona} $f\!\colon [a,b] \to \mathbb{R}$. \emph{Sum¹ czêsciow¹} (Riemanna) nazywa siê liczbê
+\[ R_{f,P(q_1,...,q_n)} = \sum_{i=1}^n f(q_i) \cdot  \Delta p_i . \]
+Funkcjê $f$ nazywa sie \emph{ca³kowaln¹ w sensie Riemanna} lub krótko \emph{R-ca³kowaln¹}, jesli dla dowolnego ci¹gu normalnego $(P^k)$  podzia³ów przedzia³u $[a,b]$ istnieje (niezale¿na od wyboru punktów porednich) granica
+\[R_f = \lim_{k \to \infty} R_{f,P^k(q_1^k,...,q_{n_k}^k) }\]
+nazywana wtedy \textbf{ca³k¹ Riemanna} tej funkcji. Równowa¿nie: je¿eli istnieje taka liczba $R_f$
+¿e dla dowolnej liczby rzeczywistej $\epsilon > 0$ istnieje taka liczba rzeczywista $\delta > 0,$  ¿e dla dowolnego podzia³u $P(q_1,...,q_n)$ o srednicy $ P(q_1,...,q_n) < \delta;$ bêd¹ te¿ w jêzyku rozdrobnieñ: ¿e dla dowolnej liczby rzeczywistej $\delta > 0$ istnieje taki podzia³ $ S(t_1,...,t_m) $ przedzial³u $[a,b],$ ¿e dla ka¿dego podzia³u $P(q_1,...q_n)$ rozdrabniaj¹cego $S(t_1,...,t_m)$, zachodzi
+\[|R_{f,P(q_1,...,q_n)} - R_f | < \epsilon \]
+Funkcjê $f$ nazywa siê wtedy \emph{ca³kowaln¹ w sensie Riemanna (R-ca³kowaln¹)}, a liczbê $R_f$ jej \textbf{ca³k¹ Riemanna}. 
+
+\end{document}

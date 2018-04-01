@@ -1,0 +1,69 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amssymb}
+\usepackage[polish]{babel}
+\usepackage{amsthm}
+\usepackage{times}
+\usepackage{anysize}
+\usepackage{array}
+
+\marginsize{1.5cm}{1.5cm}{1.5cm}{1.5cm}
+\sloppy 
+
+\theoremstyle{definition}
+\newtheorem{df}{Definicja}
+
+
+\begin{document}
+
+% \maketitle
+
+\section{Zbiory rozmyte}
+
+Pojęcie zbioru rozmytego zostało wprowadzone przez L. A. Zadeha w 1965. Stosowanie zbiorów rozmytych w systemach sterownia pozwala na dokładniejsze odwzorowanie pojęć stosowanych przez ludzi, które często są subiektywne i nieprecyzyjne. Stopniowe przejęcie między przynależnocią do zbioru a jej brakiem pozwala nam uniknąć scisłej klasyfikacji elementów, która często jest niemożliwa. Logika rozmyta jest uogólnieniem logiki klasycznej. 
+
+Koncepcja zbiorów rozmytych wyrosła na gruncie logicznego formalizowania pomysłu, aby elementom zbioru przypisywać tzw. stopień przynależnosci do zbioru, okreslający wartosć prawdziwosci danego wyrażenia za pomocą liczb z przedziału $[0,1]$. 
+
+\begin{df}
+\textbf{Zbiorem rozmytym} $A$ w pewnej niepustej przestrzeni $X$ nazywamy zbiór uporządkowanych par:
+
+\begin{equation} \label{eq1}
+ A  = \{(x, \mu_A(x))\!:x \in X \},
+\end{equation}
+gdzie:
+
+\begin{equation} \label{eq2}
+\mu_A\!:\!X\rightarrow[0, 1] 
+\end{equation}
+
+jest \textbf{funkcją przynależosci} zbioru $A$.
+Wartosc funkcji $\mu_A(x)$ w punkcie $x$ \textbf{stopniem przynaleznosci} $x$ do zbioru $A$.
+\end{df}
+
+
+Zbiory rozmyte $A$, $B$, $C$ itd. względem $X$ nazywamy również \textbf{podzbiorami rozmytymi} w $X$.
+Zbiór wszystkich zbiorów rozmytych w $X$ oznaczamy przez $F(X)$. Zbiory klasyczne można interpretować jako zbiory rozmyte z funkcją przynależnosci przyjmującą tylko wartosci 0 i 1.
+
+\medskip
+\noindent
+{\bf Przykład:} Niech $A$ oznacza zbiór niskich temperatur i niech $X = [-5,50]$. Funkcja przynależnosci może być okreslona następująco:
+\begin{equation} \label{eq3}
+\mu_A = \left\lbrace
+\begin{array}{ll}
+1  &:x < 10, \\
+-\frac{1}{10} + 2 & :10 \leqslant x \leqslant 20, \\
+0 &:x > 20.
+\end{array}\right.
+\end{equation}
+W przypadku, gdy ustalony zbiór $X$ jest skończony, tzn. $X = \{x_1,x_2,...,x_n\}$, funkcje przynależnosci zbiorów rozmytych można przedstawiać za pomocą tabelek, stosować zapis w postaci sumy:
+\begin{equation} \label{eq4}
+A = \sum_{i=1}^n\frac{\mu_A(x)}{x},
+\end{equation}
+(kreski ułamkowe i znaki sumy należy rozumieć czysto symbolicznie) lub podawać elementy zbioru w postaci par:
+\begin{equation} \label{eq5}
+ A = \{x_1,\mu_A(x_2)),(x_2,\mu_A(x_1)),...,(x_n,\mu_A(x_n))\}.
+\end{equation}
+
+\end{document}
+
