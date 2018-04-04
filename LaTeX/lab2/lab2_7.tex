@@ -1,0 +1,53 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amssymb}
+\usepackage[polish]{babel}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{anysize}
+\usepackage{array}
+
+\marginsize{1.5cm}{1.5cm}{1.5cm}{1.5cm}
+\sloppy 
+
+
+\begin{document}
+
+$$\int\limits_{-1}^2 (x^2 - 2x) dx =\left|
+	\begin{array}{c}
+	f(x) = x^2 - 2x \\
+	\int f(x)dx = \cfrac{x^3}{3} - x^2 + C \\
+	F(x) = \cfrac{x^3}{3} - x^2
+	\end{array}
+	\right|
+= \left[
+	\begin{array}{c}
+	\cfrac{x^3}{3} - x^2
+	\end{array}
+	\right]_{-1}^2
+$$
+
+$$ = \left(
+	\begin{array}{c}
+{\cfrac{2^3}{3} - 2^2}
+	\end{array}
+	\right)
+ - \left(
+	\begin{array}{c}
+	\cfrac{(-1)^3}{3} - (-1)^2
+	\end{array}
+	\right) 
+= \left(
+	\begin{array}{c}
+\cfrac{8}{3} - 4
+	\end{array}
+	\right)
+ - \left(
+	\begin{array}{c}
+	-\cfrac{1}{3} - 1
+	\end{array}
+	\right)
+ = -\frac{4}{3} + \frac{4}{3} = 0 $$
+
+\end{document}
