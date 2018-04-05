@@ -1,0 +1,41 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amssymb}
+\usepackage[utf8]{inputenc}
+\usepackage[polish]{babel}
+\usepackage{amsthm}
+\usepackage{times}
+\usepackage{anysize}
+\usepackage{array}
+
+\marginsize{1.5cm}{1.5cm}{1.5cm}{1.5cm}
+\sloppy 
+
+
+
+\begin{document}
+
+\textbf{Twierdzenie 1.} $\textnormal{Jeżeli} \displaystyle \lim_{n \to \infty} a_n = a \textnormal{ $i$} \lim_{n\to\infty}b_n = +\infty, to:$
+
+\begin{itemize}
+\item[$1^{\circ}$] $\displaystyle \lim_{n\to\infty}(a_n + b_n) = +\infty,$
+
+
+\item[$2^{\circ}$] $\displaystyle \lim_{n\to\infty}(a_n \dot b_n) = \left\lbrace
+	\begin{array}{ccc}
+	+\infty, & gdy & a > 0, \\
+	-\infty, & gdy & a<0,
+	\end{array}\right.$
+
+
+\item[$3^{\circ}$]$\displaystyle\lim_{n\to\infty} \frac{b_n}{a_n} = 0\textnormal{, $przy$ $b_n$} \neq  0\textnormal{ $dla$ $n$} \in \mathbb{N},$
+
+\item[$4^{\circ}$]$\displaystyle \lim_{n\to\infty} \frac{b_n}{a_n} = \left\lbrace
+	\begin{array}{ccc}
+	+\infty, & gdy & a > 0, \\
+	-\infty, & gdy & a < 0,
+	\end{array}\right.
+\textnormal{$przy$ $zalozeniu$ $ze$ } a_n \neq 0 \textnormal{$dla$ $n$}  \in \mathbb{N}.$
+\end{itemize}
+\end{document}
