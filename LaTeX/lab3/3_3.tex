@@ -1,0 +1,64 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[polish]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{times}
+\usepackage{graphicx}
+\usepackage{anysize}
+\usepackage{amsmath}
+\usepackage{color}
+\usepackage{listings}
+\usepackage{tikz}
+\lstloadlanguages{Ada,C++}
+
+%\marginsize{left}{right}{top}{bottom}
+\marginsize{2.5cm}{2.5cm}{2.5cm}{2.5cm}
+
+\begin{document}
+
+
+\lstset{inputencoding=utf8x,
+        extendedchars=\true,
+	literate=%
+		{ą}{{\k{a}}}1
+             {ę}{{\k{e}}}1
+             {ć}{{\'c}}1
+}
+
+\begin{lstlisting}[frame=lbtr,framesep=2em]
+#include <iostream>
+using namespace std;
+
+int main()
+{
+  int s, n, i;
+  cout << "Proszę podać liczbę naturalną n : ";
+  cin >> n;
+  i = 1;
+  s = 1;
+  
+  while (i < n)
+  {
+    i++;
+    s *= i;
+  }
+  cout << "Silnia: " << s << endl;
+}
+\end{lstlisting}
+\begin{lstlisting}[frame=lbtr,framesep=2em]
+#include <iostream>
+using namespace std;
+
+int main()
+{
+  int s, n, i;  
+  cout << "Podaj liczbę naturalną, n = ";
+  cin >> n;
+  s = 1;  
+  
+  for(i = 2; i <= n; i++) s *= i;  
+  
+  cout << "Silnia n: " << s << endl;
+}
+\end{lstlisting}
+\end{document}
