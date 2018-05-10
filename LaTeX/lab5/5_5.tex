@@ -1,0 +1,57 @@
+\documentclass{standalone}
+\usepackage[T1]{fontenc}
+\usepackage[latin2]{inputenc}
+\usepackage[english]{babel}
+\usepackage{tikz}
+\usetikzlibrary{calc,through,backgrounds,positioning,fit}
+\usetikzlibrary{shapes,arrows,shadows}
+ 
+\begin{document}
+ 
+\begin{tikzpicture}[auto,
+decision/.style = {diamond, draw=blue, thick, fill=blue!20, text width=1.5cm, 
+                   align=flush center, inner sep=1pt},
+block/.style = {rectangle, draw=blue, thick, fill=blue!20, text width=2cm, 
+                align=center, minimum height=1.3cm},
+start/.style = {draw=red, thick, ellipse, fill=red!20, minimum height=8mm},
+inout/.style = {draw=green!60!black, thick, fill=green!20, trapezium, trapezium left angle=80, 
+                trapezium right angle=-80, minimum height=10mm, text width=1cm, align=center, 
+                inner sep=1pt},
+line/.style ={draw, thick, -latex}]
+ 
+\matrix[column sep=5mm,row sep=7mm]
+{
+% row 1
+&&& \node [start] (start) {start}; & \\
+% row 2
+&&& \node [inout] (read) {read($a,b$)}; & \\
+% row 3
+
+% row 4
+&&& \node [decision] (decide) {$a = b$}; & \\
+% row 5
+&&\node [decision] (update) {$a < b$}; &&
+\node [inout] (write) {write($a$)}; &&\\
+% row 6
+\node[block] (block1) {$a = a-b$}; &
+&&\node[block](block2) {$b=b-a$};
+& \node [start] (stop) {stop}; \\
+};
+ 
+\begin{scope}[every path/.style=line]
+\path (start) -- (read);
+\path (read) -- (decide);
+
+%\path (init) -- (decide);
+
+\path (decide) -| node [near start] {yes} (write);
+\path (decide) -| node [near start] {no} (update);
+\path (update) -| node [near start] {no} (block1);
+\path (update) -| node [near start] {yes} (block2);
+
+\path (write) -- (stop);
+\path (block1)|- ++(-1.5,-1) coordinate(A) |- ($ (decide.north) + (0,0.4) $) coordinate(B);
+\path(block2) |- (A) |- (B);
+\end{scope}
+\end{tikzpicture}
+\end{document}
